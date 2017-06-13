@@ -10,12 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let questions = ["Favorite pet?", "favorite color?", "Where was I born?"]
-    let answers = [["dog", "cat", "bird"], ["blue", "black", "green"], ["Tokyo", "New York", "Tenesee"]]
+    let questions = ["What programming language is used in Linux's internal works?", "What is the main language for programming in iOS?", "What is the loopback ip address?"]
+    let answers = [["Python", "Swift", "Objective-C"], ["Swift", "Perl", "Mandarin Chinese"], ["127.0.0.1", "192.168.1.1", "10.0.0.1"]]
     
     //Variables
     var currentQuestion = 0
     var rightAnswerPlacement:UInt32 = 0
+    var points = 0
     
     
     //Label
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         if (sender.tag == Int(rightAnswerPlacement))
         {
             print ("RIGHT!")
+            points += 1
         }
         else
         {
@@ -36,6 +38,9 @@ class ViewController: UIViewController {
         if (currentQuestion != questions.count)
         {
             newQuestion()
+        }
+        else{
+            performSegue(withIdentifier:"showScore", sender: self)
         }
     }
     
